@@ -108,7 +108,7 @@ const page = () => {
         />
       </div>
 
-      <div className="flex flex-row items-center justify-between w-full border-t border-gray-300/40 pt-6">
+      <div className="flex flex-row items-center justify-between w-full border-t border-gray-300/40 py-10">
         <button className="flex flex-row items-center justify-center font-semibold text-md px-4 py-2 rounded-md border border-gray-500">
           <HiOutlineArrowSmLeft /> Previous
         </button>
