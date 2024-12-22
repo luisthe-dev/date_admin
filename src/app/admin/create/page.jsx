@@ -28,11 +28,15 @@ const page = () => {
             className="w-10/12 text-md font-semibold p-3 bg-transparent rounded-md border border-solid border-[#E5E5E5] mb-5"
           />
           <span className="font-medium text-md"> Role </span>
-          <input
-            placeholder="Enter Your Phone Number"
+          <select
+            placeholder="Select A Role"
+            defaultValue={""}
             type="email"
             className="w-10/12 text-md font-semibold p-3 bg-transparent rounded-md border border-solid border-[#E5E5E5] mb-5"
-          />
+          >
+            <option value={""} disabled> Select A Role </option>
+            <option> Admin </option>
+          </select>
           <span className="font-medium text-md"> Password </span>
           <input
             placeholder="Enter Password"
