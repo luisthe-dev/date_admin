@@ -98,7 +98,7 @@ const page = () => {
       ],
     };
 
-    const doughnutonfig = {
+    const doughnutConfig = {
       type: "doughnut",
       data: doughnuthartData,
       options: {
@@ -114,15 +114,15 @@ const page = () => {
       },
     };
 
-    const doughnuttx = document
+    const doughnutCtx = document
       .getElementById("location_chart")
       .getContext("2d");
-    new Chart(doughnuttx, doughnutonfig);
+    new Chart(doughnutCtx, doughnutConfig);
   }, []);
 
   return (
     <div className="flex flex-col w-full">
-      <div className="flex flex-row items-center justify-around w-full my-4">
+      <div className="flex flex-col lg:flex-row items-center justify-around w-full my-4">
         {stats.map((stat, statKey) => (
           <div
             className="flex flex-col w-1/3 items-center justify-center p-8"
