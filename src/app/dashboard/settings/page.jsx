@@ -7,7 +7,7 @@ import Switch from "react-switch";
 import Image from "next/image";
 import Avatar from "@/assets/images/avatar.png";
 import { FiEdit2 } from "react-icons/fi";
-import { PiTrashLight } from "react-icons/pi";
+import { FiTrash2 } from "react-icons/fi";
 import { makeFirstCharUpper, makeReadableDate } from "@/handlers/helperHandler";
 
 const page = () => {
@@ -165,7 +165,7 @@ const page = () => {
                makeFirstCharUpper(user.role),
                 "9 minutes ago",
                 <span className="flex flex-row items-center justify-start gap-1 text-xl">
-                  <PiTrashLight />
+                  <FiTrash2 />
                   <FiEdit2 />
                 </span>,
               ])}
@@ -177,7 +177,7 @@ const page = () => {
                 "Last Active",
                 "Action",
               ]}
-              spacing={"w-1/4 lg:w-[14.28%]"}
+              spacing={"w-1/4 lg:w-1/6"}
             />
           </div>
         </>

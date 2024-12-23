@@ -4,13 +4,17 @@ import MyTable from "@/components/MyTable";
 import { makeFirstCharUpper, makeReadableDate } from "@/handlers/helperHandler";
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import { PiTrashLight } from "react-icons/pi";
+import { FiTrash2 } from "react-icons/fi";
 import { GrSearch } from "react-icons/gr";
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
 import Image from "next/image";
 import Avatar from "@/assets/images/avatar.png";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+
+  const navigator = useRouter();
+
   const [userData, setUserData] = useState([
     {
       full_name: "Jon Doe",
@@ -85,7 +89,7 @@ const page = () => {
           </span>
         </div>
         <MyTable
-        keepTableNumbering={false}
+          keepTableNumbering={false}
           data={userData.map((user) => [
             <span className="flex flex-row items-center justify-center w-100 gap-1">
               <Image src={Avatar} alt="Avatar" />
@@ -110,8 +114,11 @@ const page = () => {
               {makeFirstCharUpper(user.status)}
             </span>,
             <span className="flex flex-row items-center justify-start gap-1 text-xl">
-              <PiTrashLight />
-              <FiEdit2 />
+              <FiTrash2 />
+              <FiEdit2
+              className="cursor-pointer"
+                onClick={() => navigator.push(`/dashboard/users/${user.phone}`)}
+              />
             </span>,
           ])}
           keys={[

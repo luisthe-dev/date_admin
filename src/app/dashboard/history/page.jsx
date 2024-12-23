@@ -4,7 +4,7 @@ import MyTable from "@/components/MyTable";
 import { makeFirstCharUpper, makeReadableDate } from "@/handlers/helperHandler";
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import { PiTrashLight } from "react-icons/pi";
+import { FiTrash2 } from "react-icons/fi";
 import { GrSearch } from "react-icons/gr";
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
 
@@ -105,7 +105,7 @@ const page = () => {
               {makeFirstCharUpper(user.status)}
             </span>,
             <span className="flex flex-row items-center justify-start gap-1 text-xl">
-              <PiTrashLight />
+              <FiTrash2 />
               <FiEdit2 />
             </span>,
           ])}
