@@ -2,6 +2,7 @@ import React from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
 const MyTable = ({
+  keepTableNumbering=true,
   data,
   title,
   keys,
@@ -56,7 +57,7 @@ const MyTable = ({
         </div>
         <div className="w-full">
           <div className="flex flex-row flex-wrap items-start justify-start w-full p-8 border-b pb-2 pr-2">
-            <span className={`${spacing} my-2 text-md font-bold`}>S/N</span>
+            {keepTableNumbering && <span className={`${spacing} my-2 text-md font-bold`}>S/N</span>}
             {keys.map((singleKey, singleKeyKey) => (
               <span
                 className={`${spacing} my-2 text-md font-bold`}
@@ -72,11 +73,11 @@ const MyTable = ({
                 className="flex flex-row flex-wrap items-start justify-start w-full border-b p-3 px-8 pr-2"
                 key={tableItemKey}
               >
-                <span
+                {keepTableNumbering && <span
                   className={`${spacing} my-2 text-md font-medium self-stretch justify-self-stretch flex flex-row items-center justify-start`}
                 >
                   {tableItemKey + 1}
-                </span>
+                </span>}
                 {tableItems.map((item, itemKey) => (
                   <span
                     className={`${spacing} my-2 text-md font-medium self-stretch justify-self-stretch flex flex-row items-center justify-start`}

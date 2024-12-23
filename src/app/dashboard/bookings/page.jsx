@@ -1,12 +1,18 @@
 "use client";
 
 import MyTable from "@/components/MyTable";
-import { makeReadableDate } from "@/handlers/helperHandler";
+import {
+  makeFirstCharUpper,
+  makeMonetaryNumber,
+  makeReadableDate,
+} from "@/handlers/helperHandler";
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import { PiTrashLight } from "react-icons/pi";
 import { GrSearch } from "react-icons/gr";
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
+import Image from "next/image";
+import Avatar from "@/assets/images/avatar.png";
 
 const page = () => {
   const [userData, setUserData] = useState([
@@ -17,7 +23,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "pending_confirmation",
     },
     {
       full_name: "Jon Doe",
@@ -26,7 +32,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "awaiting_meet_up",
     },
     {
       full_name: "Jon Doe",
@@ -35,7 +41,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "awaiting_meet_up",
     },
     {
       full_name: "Jon Doe",
@@ -44,7 +50,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "pending_confirmation",
     },
     {
       full_name: "Jon Doe",
@@ -53,7 +59,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "pending_confirmation",
     },
   ]);
 
@@ -79,32 +85,48 @@ const page = () => {
         <div className="flex flex-row items-center justify-start gap-3 w-full">
           <span className="font-semibold text-xl"> Ongoing Bookings </span>
           <span className="p-2 px-5 rounded-full border-2 border-[#351C82] bg-[#DED6F6] font-semibold text-sm">
-            54 Users
+            54 Bookings
           </span>
         </div>
         <MyTable
+          keepTableNumbering={false}
           data={userData.map((user) => [
-            user.full_name,
-            user.display_name,
-            user.email,
-            user.phone,
+            <span className="flex flex-row items-center justify-center w-100 gap-1">
+              <Image src={Avatar} alt="Avatar" />
+              <span> {user.display_name} </span>
+            </span>,
+            <span className="flex flex-row items-center justify-center w-100 gap-1">
+              <Image src={Avatar} alt="Avatar" />
+              <span> {user.display_name} </span>
+            </span>,
             makeReadableDate(user.created_at),
-            user.status,
-            <>
+            `${makeMonetaryNumber(134900, "NGN")}`,
+            <span className="border-solid border border-[#D0D5DD] p-2 px-4 rounded-md font-light flex flex-row gap-1 items-center justify-start">
+              <span
+                className={`h-2.5 w-2.5 rounded-full ${
+                  user.status == "awaiting_meet_up"
+                    ? "bg-[#13AE47]"
+                    : user.status == "pending_confirmation"
+                    ? "bg-[#F1940A]"
+                    : "bg-gray-500"
+                }`}
+              ></span>
+              {makeFirstCharUpper(user.status)}
+            </span>,
+            <span className="flex flex-row items-center justify-start gap-1 text-xl">
               <PiTrashLight />
               <FiEdit2 />
-            </>,
+            </span>,
           ])}
           keys={[
-            "Name",
-            "Display Name",
-            "Email",
-            "Phone Number",
-            "Sign Up Date",
-            "Verification",
+            "User Display Name",
+            "Escort Display Name",
+            "Time Of Booking",
+            "Booking Fee",
+            "Status",
             "Action",
           ]}
-          spacing={"w-1/4 lg:w-1/6"}
+          spacing={"w-1/4 lg:w-[16.5%]"}
         />
       </div>
 

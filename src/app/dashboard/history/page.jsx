@@ -1,7 +1,7 @@
 "use client";
 
 import MyTable from "@/components/MyTable";
-import { makeReadableDate } from "@/handlers/helperHandler";
+import { makeFirstCharUpper, makeReadableDate } from "@/handlers/helperHandler";
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import { PiTrashLight } from "react-icons/pi";
@@ -17,7 +17,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "pending",
     },
     {
       full_name: "Jon Doe",
@@ -26,7 +26,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "approved",
     },
     {
       full_name: "Jon Doe",
@@ -35,7 +35,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "approved",
     },
     {
       full_name: "Jon Doe",
@@ -44,7 +44,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "declined",
     },
     {
       full_name: "Jon Doe",
@@ -53,7 +53,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "approved",
     },
   ]);
 
@@ -77,23 +77,37 @@ const page = () => {
 
       <div className="flex flex-col items-center justify-center my-10 rounded-lg p-4 w-full border border-gray-400/45">
         <div className="flex flex-row items-center justify-start gap-3 w-full">
-          <span className="font-semibold text-xl"> User List & Profile </span>
+          <span className="font-semibold text-xl"> Transaction History </span>
           <span className="p-2 px-5 rounded-full border-2 border-[#351C82] bg-[#DED6F6] font-semibold text-sm">
-            54 Users
+            54 Transactions
           </span>
         </div>
         <MyTable
+        keepTableNumbering={false}
           data={userData.map((user) => [
             user.full_name,
             user.display_name,
             user.email,
             user.phone,
             makeReadableDate(user.created_at),
-            user.status,
-            <>
+            <span className="border-solid border border-[#D0D5DD] p-2 px-4 rounded-md font-light flex flex-row gap-1 items-center justify-start">
+              <span
+                className={`h-2.5 w-2.5 rounded-full ${
+                  user.status == "approved"
+                    ? "bg-[#13AE47]"
+                    : user.status == "pending"
+                    ? "bg-[#F1940A]"
+                    : user.status == "declined"
+                    ? "bg-[#ff1e00]"
+                    : "bg-gray-500"
+                }`}
+              ></span>
+              {makeFirstCharUpper(user.status)}
+            </span>,
+            <span className="flex flex-row items-center justify-start gap-1 text-xl">
               <PiTrashLight />
               <FiEdit2 />
-            </>,
+            </span>,
           ])}
           keys={[
             "Name",
@@ -104,7 +118,7 @@ const page = () => {
             "Verification",
             "Action",
           ]}
-          spacing={"w-1/4 lg:w-1/6"}
+          spacing={"w-1/4 lg:w-[14.28%]"}
         />
       </div>
 

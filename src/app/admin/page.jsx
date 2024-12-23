@@ -1,11 +1,20 @@
+"use client"
+
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const page = () => {
+  const navigator = useRouter();
+
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full p-4">
         <form
           role="form"
+          onSubmit={e => {
+            e.preventDefault();
+            navigator.push('/dashboard')
+          }}
           className="flex flex-col items-start justify-center gap-1 w-8/12"
         >
           <span className="my-4 text-4xl font-bold"> Log In </span>

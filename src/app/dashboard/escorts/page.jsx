@@ -1,12 +1,14 @@
 "use client";
 
 import MyTable from "@/components/MyTable";
-import { makeReadableDate } from "@/handlers/helperHandler";
+import { makeFirstCharUpper, makeReadableDate } from "@/handlers/helperHandler";
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import { PiTrashLight } from "react-icons/pi";
 import { GrSearch } from "react-icons/gr";
 import { HiOutlineArrowSmLeft, HiOutlineArrowSmRight } from "react-icons/hi";
+import Image from "next/image";
+import Avatar from "@/assets/images/avatar.png";
 
 const page = () => {
   const [userData, setUserData] = useState([
@@ -17,7 +19,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "approved",
     },
     {
       full_name: "Jon Doe",
@@ -26,7 +28,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "pending",
     },
     {
       full_name: "Jon Doe",
@@ -35,7 +37,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "blocked",
     },
     {
       full_name: "Jon Doe",
@@ -44,7 +46,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "approved",
     },
     {
       full_name: "Jon Doe",
@@ -53,7 +55,7 @@ const page = () => {
       email: "jondoe@gmail.com",
       phone: "08144567890",
       created_at: "2024-12-03T20:09:10",
-      status: "Pending",
+      status: "approved",
     },
   ]);
 
@@ -83,17 +85,34 @@ const page = () => {
           </span>
         </div>
         <MyTable
+          keepTableNumbering={false}
           data={userData.map((user) => [
-            user.full_name,
+            <span className="flex flex-row items-center justify-center w-100 gap-1">
+              <Image src={Avatar} alt="Avatar" />
+              <span> {user.full_name} </span>
+            </span>,
             user.display_name,
             user.email,
             user.phone,
             makeReadableDate(user.created_at),
-            user.status,
-            <>
+            <span className="border-solid border border-[#D0D5DD] p-2 px-4 rounded-md font-light flex flex-row gap-1 items-center justify-start">
+              <span
+                className={`h-2.5 w-2.5 rounded-full ${
+                  user.status == "approved"
+                    ? "bg-[#13AE47]"
+                    : user.status == "pending"
+                    ? "bg-[#F1940A]"
+                    : user.status == "blocked"
+                    ? "bg-[#ff1e00]"
+                    : "bg-gray-500"
+                }`}
+              ></span>
+              {makeFirstCharUpper(user.status)}
+            </span>,
+            <span className="flex flex-row items-center justify-start gap-1 text-xl">
               <PiTrashLight />
               <FiEdit2 />
-            </>,
+            </span>,
           ])}
           keys={[
             "Name",
@@ -104,7 +123,7 @@ const page = () => {
             "Verification",
             "Action",
           ]}
-          spacing={"w-1/4 lg:w-1/6"}
+          spacing={"w-1/4 lg:w-[14.28%]"}
         />
       </div>
 

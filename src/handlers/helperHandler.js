@@ -13,10 +13,10 @@ export const makeReadableDate = (date, time = false) => {
   return new Date(date).toLocaleDateString("en-us", props);
 };
 
-export const makeMonetaryNumber = (number) =>
+export const makeMonetaryNumber = (number, symbol = "₦") =>
   typeof Number(number) != "number"
     ? number
-    : `₦${makeFormattedNumber(Number(number))}`;
+    : `${symbol} ${makeFormattedNumber(Number(number))}`;
 
 export const makeFormattedNumber = (number) =>
   typeof Number(number) != "number"
