@@ -7,8 +7,8 @@ import Avatar from "@/assets/images/avatar.png";
 const Header = ({ menuHandler, menuState }) => {
   return (
     <div className="w-full flex items-center justify-between p-6 pr-12 border-b bg-white">
-      {/* <RiMenu5Fill size={24} onClick={() => menuHandler(!menuState)} /> */}
-      <div className="flex">
+      <div className="flex items-center justify-start flex-row gap-1">
+        <RiMenu5Fill size={24} onClick={() => menuHandler(!menuState)} />
         <span className="font-semibold text-2xl"> Dashboard </span>
       </div>
       <div className="items-center justify-center flex flex-row gap-1">

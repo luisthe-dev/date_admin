@@ -125,7 +125,7 @@ const page = () => {
       <div className="flex flex-col lg:flex-row items-center justify-around w-full my-4">
         {stats.map((stat, statKey) => (
           <div
-            className="flex flex-col w-1/3 items-center justify-center p-8"
+            className="flex flex-col w-full lg:w-1/3 items-center justify-center p-8"
             key={statKey}
           >
             <div className="flex flex-col w-full shadow-md rounded-md p-8 bg-white">
@@ -144,8 +144,8 @@ const page = () => {
           </div>
         ))}
       </div>
-      <div className="flex flex-row items-stretch justify-around w-full">
-        <div className="flex flex-col w-8/12 p-8">
+      <div className="flex flex-col lg:flex-row items-stretch justify-around w-full">
+        <div className="flex flex-col w-full lg:w-8/12 p-8">
           <div className="flex flex-col w-full shadow-md rounded-md p-8 bg-white">
             <span className="font-semibold text-2xl"> Booking Commission </span>
             <div className="w-full px-5 my-3">
@@ -153,7 +153,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-4/12 p-8">
+        <div className="flex flex-col w-full lg:w-4/12 p-8">
           <div className="flex flex-col w-full shadow-md rounded-md p-8 bg-white">
             <span className="font-semibold text-2xl"> Booking Activity </span>
             <div className="w-full px-5 my-3">
@@ -169,8 +169,8 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex flex-row items-stretch justify-around w-full">
-        <div className="flex flex-col w-8/12 p-8">
+      <div className="flex flex-col lg:flex-row items-stretch justify-around w-full">
+        <div className="flex flex-col w-full lg:w-8/12 p-8">
           <div className="flex flex-col w-full shadow-md rounded-md p-8 bg-white">
             <span className="font-semibold text-2xl">
               Registered Users & Escorts By Location
@@ -180,7 +180,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-4/12 p-8">
+        <div className="flex flex-col w-full lg:w-4/12 p-8">
           <div className="flex flex-col w-full shadow-md rounded-md p-8 bg-white">
             <span className="font-semibold text-2xl">
               Top Locations this week

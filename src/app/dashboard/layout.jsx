@@ -33,7 +33,7 @@ const layout = ({ children }) => {
             openMenu ? "w-64" : "w-30 -left-64 lg:left-0 pl-0"
           }`}
         >
-          <Sidebar menuState={openMenu} />
+          <Sidebar menuState={openMenu} setMenuState={setOpenMenu} />
         </div>
         <div className="flex flex-grow flex-col w-1/2 bg-[#F9FAFB]">
           <Header menuHandler={setOpenMenu} menuState={openMenu} />

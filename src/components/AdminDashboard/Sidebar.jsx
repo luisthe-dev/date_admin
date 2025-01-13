@@ -9,7 +9,7 @@ import { FiUser, FiUsers } from "react-icons/fi";
 import Image from "next/image";
 import Logo from "@/assets/svgs/logo.svg";
 
-const Sidebar = ({ menuState }) => {
+const Sidebar = ({ menuState, setMenuState }) => {
   const pathname = usePathname();
 
   const menuItems = [
@@ -51,6 +51,7 @@ const Sidebar = ({ menuState }) => {
         className={`w-full px-3 py-5 flex items-center transition-all ease-in-out duration-200 ${
           menuState ? "justify-start" : "justify-center"
         }`}
+        onClick={() => setMenuState(!menuState)}
       >
         <Image
           src={Logo}

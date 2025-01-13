@@ -55,8 +55,8 @@ const MyTable = ({
             </div>
           </div>
         </div>
-        <div className="w-full">
-          <div className="flex flex-row flex-wrap items-start justify-start w-full p-8 border-b pb-2 pr-2">
+        <div className="w-full overflow-scroll">
+          <div className="flex flex-row flex-wrap-0 items-start justify-start w-full p-8 border-b pb-2 pr-2">
             {keepTableNumbering && <span className={`${spacing} my-2 text-md font-bold`}>S/N</span>}
             {keys.map((singleKey, singleKeyKey) => (
               <span
@@ -70,7 +70,7 @@ const MyTable = ({
           {data && data.length > 0 ? (
             data?.map((tableItems, tableItemKey) => (
               <div
-                className="flex flex-row flex-wrap items-start justify-start w-full border-b p-3 px-8 pr-2"
+                className="flex flex-row flex-wrap-0 items-start justify-start w-full border-b p-3 px-8 pr-2 mx-3 overflow-scroll"
                 key={tableItemKey}
               >
                 {keepTableNumbering && <span
@@ -80,7 +80,7 @@ const MyTable = ({
                 </span>}
                 {tableItems.map((item, itemKey) => (
                   <span
-                    className={`${spacing} my-2 text-md font-medium self-stretch justify-self-stretch flex flex-row items-center justify-start`}
+                    className={`${spacing} my-2 text-md font-medium self-stretch justify-self-stretch flex flex-row items-center justify-start text-wrap`}
                     key={itemKey}
                   >
                     {item}

@@ -1,5 +1,7 @@
 "use client"
 
+import AuthImage from "@/assets/svgs/logo.svg";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -15,23 +17,28 @@ const page = () => {
             e.preventDefault();
             navigator.push('/dashboard')
           }}
-          className="flex flex-col items-start justify-center gap-1 w-8/12"
+          className="flex flex-col items-start justify-center gap-1 w-full lg:w-8/12"
         >
+          <Image
+            src={AuthImage}
+            alt="BlazyeUp Logo"
+            className="w-full transition-all ease-in-out duration-200 self-center"
+          />
           <span className="my-4 text-4xl font-bold"> Log In </span>
           <span className="font-medium text-md"> Email Address </span>
           <input
             placeholder="Enter Your Email"
             type="email"
-            className="w-10/12 text-md font-semibold p-3 bg-transparent rounded-md border border-solid border-[#E5E5E5] mb-5"
+            className="w-full lg:w-10/12 text-md font-semibold p-3 bg-transparent rounded-md border border-solid border-[#E5E5E5] mb-5"
           />
           <span className="font-medium text-md"> Password </span>
           <input
             placeholder="Enter Password"
             type="password"
-            className="w-10/12 text-md font-semibold p-3 bg-transparent rounded-md border border-solid border-[#E5E5E5] mb-5"
+            className="w-full lg:w-10/12 text-md font-semibold p-3 bg-transparent rounded-md border border-solid border-[#E5E5E5] mb-5"
           />
 
-          <button type="submit" className="bg-[#351C82] text-white font-semibold text-md w-10/12 rounded-md mt-4 py-3">
+          <button type="submit" className="bg-[#351C82] text-white font-semibold text-md w-full lg:w-10/12 rounded-md mt-4 py-3">
             Sign In
           </button>
         </form>

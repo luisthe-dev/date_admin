@@ -65,13 +65,13 @@ const page = () => {
 
   return (
     <div className="flex flex-col items-start justify-start w-full p-8">
-      <div className="flex flex-row items-center justify-between w-full">
-        <select className="flex items-center flex-row-reverse text-xl font-semibold bg-transparent border border-gray-500/35 px-5 py-3 rounded-md">
+      <div className="flex flex-col lg:flex-row items-center justify-between w-full">
+        <select className="flex items-center flex-row-reverse text-xl font-semibold bg-transparent border border-gray-500/35 px-5 py-3 rounded-md w-full">
           <option> All </option>
           <option> Long Option Check </option>
         </select>
 
-        <div className="flex flex-row items-center justify-center rounded-md border border-gray-300/55 px-5 py-3 gap-2 w-3/12">
+        <div className="flex flex-row items-center justify-end lg:justify-center rounded-md border border-gray-300/55 px-5 py-3 gap-2 w-full lg:w-3/12 my-3">
           <GrSearch className="text-xl" />
           <input
             type="search"
@@ -82,7 +82,7 @@ const page = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center my-10 rounded-lg p-4 w-full border border-gray-400/45">
-        <div className="flex flex-row items-center justify-start gap-3 w-full">
+        <div className="flex flex-row items-center justify-between mt-2 mx-2 lg:justify-start gap-3 w-full">
           <span className="font-semibold text-xl"> User List & Profile </span>
           <span className="p-2 px-5 rounded-full border-2 border-[#351C82] bg-[#DED6F6] font-semibold text-sm">
             54 Users
@@ -130,7 +130,7 @@ const page = () => {
             "Verification",
             "Action",
           ]}
-          spacing={"w-1/4 lg:w-[14.28%]"}
+          spacing={"w-auto lg:w-[14.28%]"}
         />
       </div>
 
